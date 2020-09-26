@@ -1,7 +1,6 @@
 import os 
 class Config :
     '''General config parent class'''
-    
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://ABDIHAKIM:CIT0017@localhost/pitchmaster'
 class ProdConfig(Config): 
     '''productio config  child class
