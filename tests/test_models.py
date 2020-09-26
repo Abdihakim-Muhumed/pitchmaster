@@ -2,7 +2,7 @@ import unittest
 from app.models import User, Pitch, Comment
 
 class TestUser(unittest.TestCase):
-
+    '''class to test behaviour of User Model'''
     def setUp(self):
         self.new_user = User(password = 'Abdi9999')
 
@@ -15,4 +15,3 @@ class TestUser(unittest.TestCase):
 
     def test_password_verification(self):
         self.assertTrue(self.new_user.verify_password('Abdi999'))
-class TestPitch(unittest.TestCase):
