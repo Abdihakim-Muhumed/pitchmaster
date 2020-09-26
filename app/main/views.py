@@ -6,6 +6,11 @@ from ..models import User,Pitch,Comment
 
 @main.route('/')
 def index():
+    pickup = Pitch.get_pitches('pickuplines')
+    interview = Pitch.get_pitches('interviewpitch')
+    pitches = Pitch.query.all()
+
+    return render_template('index.html', title='Home', interview=interview, pickup = pickup, pitches=pitches)
     return render_template('index.html')
 
 
