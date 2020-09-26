@@ -1,12 +1,14 @@
-<h1>Welcome to pitch master</h1>
+
 {% import 'bootstrap/wtf.html' as wtf %}
 {% extends 'base.html' %}
+{% block content%}
+<h1>Welcome to pitch master</h1>
 <div class="container">
     <div class="row text-center">
         <div class="col-md-2"></div>
         <div class="col-md-6">
-            {% for pitche in pitches %}
             <h1>Top pitches</h1>
+            {% for pitch in pitches %}
             <div class="card border-info shadow-lg">
                 <div class="card-header text-center font-weight-bold">
                   {{pitch.title|upper}}
@@ -42,3 +44,5 @@
         </div>
     </div>
 </div>
+
+{% endblock%}
