@@ -3,7 +3,7 @@ from wtforms.validators import Required,Email,EqualTo
 from wtforms import ValidationError
 from ..models import User
 from wtforms import StringField,PasswordField,BooleanField,SubmitField
-
+from flask import flash
 class RegistrationForm(FlaskForm):
     email = StringField('Your Email Address:',validators=[Required(),Email()])
     username = StringField('Enter your username:',validators = [Required()])
@@ -18,10 +18,10 @@ class RegistrationForm(FlaskForm):
     def validate_username(self,data_field):
         if User.query.filter_by(username = data_field.data).first():
             raise ValidationError('That username is not available', 'danger')
-
-    def validate_password(self,password1=password,password2=password_confirm):
-        if password1 is not password2:
-            raise ValidationError('Passwords must match','danger')
+    def validate_password(self,pass1=password,pass2=password_confirm):
+        if pass1 is not pass2:
+            flash('Passwords must match','danger')
+    
 
 class LoginForm(FlaskForm):
     email = StringField('Your Email Address:',validators=[Required(),Email()])

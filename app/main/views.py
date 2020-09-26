@@ -11,7 +11,6 @@ def index():
     pitches = Pitch.query.all()
 
     return render_template('index.html', title='Home', interview=interview, pickup = pickup, pitches=pitches)
-    return render_template('index.html')
 
 
 @main.route('/user/<uname>')
@@ -22,3 +21,16 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user)
+
+@main.route('/pitch/new/', methods = ['GET','POST'])
+@login_required
+def new_pitch():
+
+    title = 'New pitch'
+    return render_template('new_pitch.html',title = title )
+
+@main.route('/pitches/interview_pitches')
+def interview_pitches():
+
+    pitches = Pitch.get_pitches('interviewpitch')
+    return render_template('interview.html', pitches = pitches)
