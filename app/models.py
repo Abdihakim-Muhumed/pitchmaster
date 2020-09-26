@@ -1,5 +1,6 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
+from datetime import datetime
 class User(db.Model):
     ''' class for user model'''
     __tablename__ = 'users'
@@ -25,4 +26,36 @@ class User(db.Model):
      def __repr__(self):
         return f'User {self.username}'
 
+
+class Pitch(db.Model):
+    __tablename__ = 'pitches'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(250), nullable=False)
+    content= db.Column(db.Text, nullable=False)
+    likes = db.Column(db.Integer)
+    dislikes = db.Column(db.Integer)
+    category = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    postedtime = db.Column(db.DateTime, default=datetime.utcnow)
+    user = db.relationship("User", foreign_keys=user_id)
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
     
+    @classmethod
+    def get_pitches(cls, category):
+        pitches = cls.query.filter_by(category=category).all()
+        return pitches
+    @classmethod
+    def get_all_pitches(cls):
+        pitches = cls.query.all()
+        return pitches
+
+    
+    @classmethod
+    def get_pitch(cls, id):
+        pitch = cls.query.filter_by(id=id).first()
+        return pitch
+
