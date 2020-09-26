@@ -33,7 +33,7 @@ def register():
         
         return redirect(url_for('auth.login'))
             
-        title = 'Pitchmaster sign up' 
+    title = 'Pitchmaster sign up' 
     return render_template('auth/register.html',registration_form = form,title=title)
 
 
