@@ -5,7 +5,7 @@
 <div class="row">
 
     <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-6">
       <div class="card">
           <div class="card-header">
               <!-- displaying  Username-->
@@ -16,11 +16,20 @@
                  {% if user.bio %}
                 <p> {{user.bio}}</p>
                 {%else%}
-                <p> {{user.username| capitalize}} has no bio </p>
+                <p> You have no bio </p>
                 {% endif %}
           </div>
       </div>
   </div>
+  <div class="col-md-3">
+    <div class="card">
+        <ul class="list-group d-flex flex-row justify-content-around ">
+            <li  class="list-group-item list-group-item-action list-group-item-info border-info" style="box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important">
+                <a href="{{url_for('main.edit_profile',uname=user.username)}}">Update Profile</a></li>
+        </ul>
+    </div>
+</div>
+  <div></div>
 
 </div>
 </div>

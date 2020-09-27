@@ -1,13 +1,23 @@
 {% extends 'bootstrap/base.html'%}
-<!-- Navbar block  --> 
-{% block navbar %}
-    {% include 'navbar.html' %}
-{% endblock %}
-<!--Content block-->
-{% block content %}
-    {% include 'index.html'%}
-{% endblock%}
-<!--Footer block-->
-{% block footer%}
-    {% include 'footer.html'%}
-{% endblock%}
+<!DOCTYPE html> 
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    </head>
+    <body>
+        <!-- Navbar block  --> 
+        {% block navbar %}
+            {% include 'navbar.html' %}
+        {% endblock %}
+        <!--Content block-->
+        {% block content %}
+            {% include 'index.html'%}
+        {% endblock%}
+        <!--Footer block-->
+        {% block footer%}
+            {% include 'footer.html'%}
+        {% endblock%}
+    </body>
+</html>

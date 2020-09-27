@@ -2,7 +2,7 @@ import os
 class Config :
     '''General config parent class'''
     SECRET_KEY="powerful secretkey"
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://ABDIHAKIM:12345678@localhost/pitchmaster'
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587

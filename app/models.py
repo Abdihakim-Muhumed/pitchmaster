@@ -40,12 +40,10 @@ class Pitch(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), nullable=False)
     content= db.Column(db.Text, nullable=False)
-    likes = db.Column(db.Integer)
-    dislikes = db.Column(db.Integer)
     category = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    postedtime = db.Column(db.DateTime, default=datetime.utcnow)
     user = db.relationship("User", foreign_keys=user_id)
+
 
     def save_pitch(self):
         db.session.add(self)
@@ -71,11 +69,9 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(1500))
-    postetime = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     user = db.relationship("User", foreign_keys=user_id)
     pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
-
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
