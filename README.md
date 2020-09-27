@@ -5,7 +5,7 @@ This is a web application that will allow users to pitch ideas to people. The us
 
 # Setup Instructions:
 
-Click this link to launch the app: 
+Click this link to launch the app: https://my-pitchmaster.herokuapp.com/
 # Technologies
  1.Python(flask)
  2.HTML
